@@ -1,0 +1,78 @@
+ -- 1.- Apellido de todos los empleados 
+SHOW tables;
+SELECT apellido_paterno, apellido_materno
+FROM empleado;
+-- 2.- Apellido, nombre y puesto 
+SELECT apellido_paterno, apellido_materno, nombre, id_puesto
+FROM empleado;
+
+-- 3.- TODOS los datos 
+SELECT *
+FROM empleado;
+
+-- 4.- Apellido, nombre y puesto de todos los SalesRep esta no pude bien
+SELECT *
+FROM employees
+WHERE jobTitle = "Sales Rep";
+
+-- 5.- con dodigo de oficina 1 
+
+SELECT * 
+FROM employees 
+WHERE jobTitle = "Sales Rep" 
+AND officeCode = 1;
+
+-- 6.- con codigo de oficina 1,2 y3 
+
+SELECT * 
+FROM employees 
+WHERE jobTitle = "Sales Rep" 
+AND officeCode IN(1,2,3);
+
+-- 7.- NO SalesRep
+
+SELECT * 
+FROM employees
+WHERE NOT jobTitle = "Sales Rep";
+
+-- 8.- Código de oficina mayor a 5 
+SELECT * 
+FROM employees 
+WHERE officeCode > 5;
+
+-- 9.- Código menor o igual a 4 
+SELECT * 
+FROM employees 
+WHERE officeCode <= 4;
+
+-- 10.- Customers de California USA
+SELECT * 
+FROM customers
+WHERE country = "USA"
+AND state = "CA";
+
+-- 11.- Customers de California USA con límite de crédito mayor a 100000
+
+SELECT * 
+FROM customers 
+WHERE country = "USA" 
+AND state = "CA"
+AND creditLimit > 100000;
+
+-- 12.- Customers USA o France 
+SELECT * 
+FROM customers 
+WHERE country = "France"
+OR country = "USA";
+
+-- 13.- Customers USA o France con limite de crédito 100000
+SELECT customerName AS Nombre, country AS Pais, creditLimit AS LimiteDeCredito
+FROM customers
+WHERE creditLimit > 100000
+AND country = "France"
+OR country = "USA";
+
+-- 14.- Dentro de la tabla offices, obtén el código de la oficina, ciudad, teléfono y país de aquellas oficinas que se encuentren en USA o France.
+SELECT officeCode AS CodigoOficina, state AS Ciudad, phone AS Telefono, country AS Pais
+FROM offices
+WHERE country = "USA";
